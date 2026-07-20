@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
+import type { ReactNode } from "react";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -19,23 +14,13 @@ export const metadata: Metadata = {
     template: "%s | Campus Nexus",
   },
   description:
-    "Enterprise-grade university CMS frontend for managing academic content, admissions, departments, notices, events, and role-based dashboards.",
+    "Enterprise-grade university CMS frontend built with Next.js for managing departments, faculty, admissions, notices, events, academic content, and role-based dashboards.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body
-        className={cn(
-          inter.className,
-          manrope.variable,
-          "min-h-screen bg-slate-50 text-slate-900 antialiased"
-        )}
-      >
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>

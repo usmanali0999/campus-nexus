@@ -1,57 +1,55 @@
-import Link from "next/link";
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { forwardRef, type ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
-type ButtonProps = {
-  children: ReactNode;
-  href?: string;
-  className?: string;
-  variant?: "primary" | "secondary" | "outline" | "ghost";
-  size?: "sm" | "md" | "lg";
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonSize = "sm" | "md" | "lg";
 
-const variantClasses = {
+const baseStyles =
+  "inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400/60 disabled:cursor-not-allowed disabled:opacity-60";
+
+const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-slate-950 text-white hover:bg-slate-800 shadow-lg shadow-slate-950/10",
+    "bg-blue-600 text-white hover:bg-blue-500 shadow-[0_12px_30px_-12px_rgba(37,99,235,0.8)]",
   secondary:
-    "bg-cyan-600 text-white hover:bg-cyan-700 shadow-lg shadow-cyan-600/20",
-  outline:
-    "border border-slate-300 bg-white text-slate-900 hover:bg-slate-50",
-  ghost: "bg-transparent text-slate-700 hover:bg-slate-100",
+    "border border-white/10 bg-white/5 text-slate-100 hover:bg-white/10 backdrop-blur-xl",
+  ghost: "text-slate-200 hover:bg-white/8",
 };
 
-const sizeClasses = {
-  sm: "h-10 px-4 text-sm",
+const sizes: Record<ButtonSize, string> = {
+  sm: "h-9 px-4 text-sm",
   md: "h-11 px-5 text-sm",
   lg: "h-12 px-6 text-base",
 };
 
-export default function Button({
-  children,
-  href,
-  className,
+export function buttonStyles({
   variant = "primary",
   size = "md",
-  ...props
-}: ButtonProps) {
-  const classes = cn(
-    "inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-60",
-    variantClasses[variant],
-    sizeClasses[size],
-    className
-  );
+  className,
+}: {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  className?: string;
+}) {
+  return cn(baseStyles, variants[variant], sizes[size], className);
+}
 
-  if (href) {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+};
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = "primary", size = "md", ...props }, ref) => {
     return (
-      <Link href={href} className={classes}>
-        {children}
-      </Link>
+      <button
+        ref={ref}
+        className={buttonStyles({ variant, size, className })}
+        {...props}
+      />
     );
   }
+);
 
-  return (
-    <button className={classes} {...props}>
-      {children}
-    </button>
-  );
-}
+Button.displayName = "Button";
+
+export default Button;

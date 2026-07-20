@@ -1,64 +1,75 @@
-import PageHeader from "@/components/shared/PageHeader";
-import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
+import Card from "@/components/ui/Card";
+import Input from "@/components/ui/Input";
+import PageHeader from "@/components/shared/PageHeader";
+
+const contacts = [
+  {
+    title: "General Office",
+    value: "admin@campusnexus.edu",
+    detail: "General communication and public information.",
+  },
+  {
+    title: "Admissions Desk",
+    value: "admissions@campusnexus.edu",
+    detail: "Queries related to applications, eligibility, and merit.",
+  },
+  {
+    title: "Academic Affairs",
+    value: "academics@campusnexus.edu",
+    detail: "Program structure, departments, and academic policy support.",
+  },
+  {
+    title: "IT & Platform",
+    value: "support@campusnexus.edu",
+    detail: "Portal access, systems support, and operational assistance.",
+  },
+];
 
 export default function ContactPage() {
   return (
-    <>
-      <PageHeader
-        eyebrow="Contact"
-        title="Connect with the university through a cleaner digital experience."
-        description="This page is prepared for support channels, campus office details, departmental contacts, and future inquiry submissions."
-      />
+    <section className="px-6 py-16">
+      <div className="mx-auto max-w-7xl space-y-10">
+        <PageHeader
+          eyebrow="Contact"
+          title="Reach the right office with confidence."
+          description="Campus Nexus supports clear communication channels for applicants, students, faculty, and administrative stakeholders."
+        />
 
-      <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
-        <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="grid gap-6 lg:grid-cols-[1fr_0.95fr]">
+          <div className="grid gap-6 sm:grid-cols-2">
+            {contacts.map((item) => (
+              <Card key={item.title}>
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-3 text-sm text-blue-200">{item.value}</p>
+                <p className="mt-3 text-sm leading-6 text-slate-400">
+                  {item.detail}
+                </p>
+              </Card>
+            ))}
+          </div>
+
           <Card>
-            <h3 className="text-2xl font-semibold text-slate-950">
-              Campus Information
-            </h3>
-            <div className="mt-6 space-y-5 text-sm text-slate-600">
-              <div>
-                <p className="font-semibold text-slate-950">Address</p>
-                <p className="mt-1">Main University Road, Knowledge District</p>
+            <h3 className="text-xl font-semibold text-white">Send a message</h3>
+            <form className="mt-6 space-y-4">
+              <Input label="Full Name" placeholder="Enter your full name" />
+              <Input label="Email Address" type="email" placeholder="you@example.com" />
+              <Input label="Subject" placeholder="How can we help?" />
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-slate-200">Message</label>
+                <textarea
+                  rows={5}
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-400 focus:border-blue-400/60"
+                  placeholder="Write your message here..."
+                />
               </div>
-              <div>
-                <p className="font-semibold text-slate-950">Phone</p>
-                <p className="mt-1">+92 300 0000000</p>
-              </div>
-              <div>
-                <p className="font-semibold text-slate-950">Email</p>
-                <p className="mt-1">info@campusnexus.edu</p>
-              </div>
-            </div>
+              <Button type="submit" className="w-full">
+                Submit Inquiry
+              </Button>
+            </form>
           </Card>
-
-          <Card>
-            <h3 className="text-2xl font-semibold text-slate-950">
-              Send an Inquiry
-            </h3>
-
-            <form className="mt-6 grid gap-4">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input
-                  type="text"
-                  placeholder="Full name"
-                  className="h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none ring-0 placeholder:text-slate-400 focus:border-cyan-500"
-                />
-                <input
-                  type="email"
-                  placeholder="Email address"
-                  className="h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none ring-0 placeholder:text-slate-400 focus:border-cyan-500"
-                />
-              </div>
-
-              <input
-                type="text"
-                placeholder="Subject"
-                className="h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none ring-0 placeholder:text-slate-400 focus:border-cyan-500"
-              />
-
-              <textarea
-                rows={6}
-                placeholder="Write your message..."
-                className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm outline-none placeholder:text-slate-400 focus:border-cyan-500"
+        </div>
+      </div>
+    </section>
+  );
+}

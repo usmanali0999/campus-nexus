@@ -1,44 +1,68 @@
-import PageHeader from "@/components/shared/PageHeader";
 import Card from "@/components/ui/Card";
+import PageHeader from "@/components/shared/PageHeader";
 
 const pillars = [
   {
-    title: "Academic Excellence",
-    text: "A digital foundation that reflects research quality, teaching standards, and institutional trust.",
+    title: "Institutional Clarity",
+    description:
+      "Centralized visibility for content, departments, academic workflows, and administrative decisions.",
   },
   {
-    title: "Operational Clarity",
-    text: "Organized information architecture for departments, notices, admissions, and student-facing content.",
+    title: "Scalable Frontend Architecture",
+    description:
+      "Designed to connect smoothly with future APIs, authentication systems, and database-backed modules.",
   },
   {
-    title: "Future-Ready Scale",
-    text: "Prepared for backend APIs, data workflows, role-based permissions, and content governance.",
+    title: "Executive-Level UX",
+    description:
+      "Clean information hierarchy, modular components, and product-ready layouts for enterprise presentation.",
   },
 ];
 
 export default function AboutPage() {
   return (
-    <>
-      <PageHeader
-        eyebrow="About Campus Nexus"
-        title="A modern university platform designed like a real product."
-        description="Campus Nexus is built to present a university as a connected digital institution, combining public communication, academic identity, and internal operational visibility."
-      />
+    <section className="px-6 py-16">
+      <div className="mx-auto max-w-7xl space-y-10">
+        <PageHeader
+          eyebrow="About Campus Nexus"
+          title="A modern operating layer for universities."
+          description="Campus Nexus is built to unify public communication and internal academic operations under one premium frontend system."
+        />
 
-      <section className="mx-auto max-w-7xl px-6 pb-16 lg:px-8">
-        <div className="grid gap-5 lg:grid-cols-3">
-          {pillars.map((pillar) => (
-            <Card key={pillar.title}>
-              <h3 className="text-2xl font-semibold text-slate-950">
-                {pillar.title}
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-slate-600">
-                {pillar.text}
+        <div className="grid gap-6 md:grid-cols-3">
+          {pillars.map((item) => (
+            <Card key={item.title}>
+              <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-slate-400">
+                {item.description}
               </p>
             </Card>
           ))}
         </div>
-      </section>
-    </>
+
+        <Card className="p-8">
+          <h3 className="text-2xl font-semibold text-white">
+            What this platform is prepared to handle
+          </h3>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {[
+              "Public website content management",
+              "Admissions journey and applicant communication",
+              "Departmental pages and faculty publishing",
+              "Role-based dashboard experiences",
+              "Academic notices, events, and announcements",
+              "Future CRUD, analytics, and backend integrations",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-300"
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+        </Card>
+      </div>
+    </section>
   );
 }

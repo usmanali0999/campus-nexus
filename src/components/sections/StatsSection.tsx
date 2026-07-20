@@ -1,22 +1,20 @@
 import Card from "@/components/ui/Card";
 
 const stats = [
-  { value: "120+", label: "Programs managed across all faculties" },
-  { value: "450+", label: "Annual notices, updates, and circulars" },
-  { value: "80+", label: "University events published per academic year" },
-  { value: "15+", label: "Core admin workflows prepared for expansion" },
+  { label: "Active Students", value: "12,840" },
+  { label: "Faculty Members", value: "1,120" },
+  { label: "Programs Offered", value: "42" },
+  { label: "Annual Applications", value: "18,300+" },
 ];
 
 export default function StatsSection() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-6 lg:px-8 lg:py-10">
-      <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        {stats.map((stat) => (
-          <Card key={stat.label}>
-            <p className="text-4xl font-semibold tracking-tight text-slate-950">
-              {stat.value}
-            </p>
-            <p className="mt-3 text-sm leading-7 text-slate-600">{stat.label}</p>
+    <section className="px-6 py-8">
+      <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {stats.map((item) => (
+          <Card key={item.label} className="p-6">
+            <p className="text-sm text-slate-400">{item.label}</p>
+            <p className="mt-3 text-3xl font-semibold text-white">{item.value}</p>
           </Card>
         ))}
       </div>

@@ -1,25 +1,40 @@
-import Badge from "@/components/ui/Badge;
+import type { ReactNode } from "react";
 
 type PageHeaderProps = {
   eyebrow?: string;
   title: string;
-  description: string;
+  description?: string;
+  action?: ReactNode;
 };
 
 export default function PageHeader({
   eyebrow,
   title,
   description,
+  action,
 }: PageHeaderProps) {
   return (
-    <section className="mx-auto max-w-7xl px-6 pb-8 pt-16 lg:px-8 lg:pt-20">
-      <div className="max-w-3xl">
-        {eyebrow ? <Badge>{eyebrow}</Badge> : null}
-        <h1 className="mt-5 text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
-          {title}
-        </h1>
-        <p className="mt-5 text-lg leading-8 text-slate-600">{description}</p>
+    <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div className="max-w-2xl space-y-3">
+        {eyebrow ? (
+          <span className="inline-flex w-fit rounded-full border border-blue-400/20 bg-blue-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-blue-200">
+            {eyebrow}
+          </span>
+        ) : null}
+
+        <div className="space-y-2">
+          <h1 className="text-3xl font-semibold tracking-tight text-white md:text-4xl">
+            {title}
+          </h1>
+          {description ? (
+            <p className="text-sm leading-7 text-slate-300 md:text-base">
+              {description}
+            </p>
+          ) : null}
+        </div>
       </div>
-    </section>
+
+      {action ? <div>{action}</div> : null}
+    </div>
   );
 }

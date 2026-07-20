@@ -1,22 +1,28 @@
+import { BookOpen, Building2, CreditCard, Users } from "lucide-react";
+
 export const dashboardStats = [
   {
     title: "Active Students",
-    value: "18,240",
-    change: "+12.4% from last semester",
+    value: "12,840",
+    change: "+8.2%",
+    icon: Users,
   },
   {
-    title: "Faculty Members",
-    value: "1,284",
-    change: "+4.1% growth this year",
+    title: "Departments",
+    value: "24",
+    change: "+2 new",
+    icon: Building2,
   },
   {
-    title: "Open Admissions",
-    value: "3,920",
-    change: "Spring intake in progress",
+    title: "Courses Running",
+    value: "186",
+    change: "+14 this term",
+    icon: BookOpen,
   },
   {
-    title: "Published Notices",
-    value: "148",
-    change: "Updated across all departments",
+    title: "Fee Collection",
+    value: "$2.4M",
+    change: "94% cleared",
+    icon: CreditCard,
   },
 ];

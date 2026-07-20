@@ -1,100 +1,107 @@
-import Button from "@/components/ui/Button";
+import Link from "next/link";
+import { ArrowRight, ShieldCheck, Sparkles, Users } from "lucide-react";
 import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
-
-const highlights = [
-  "Unified public website and internal portal experience",
-  "Designed for scalable CMS and future backend integration",
-  "Role-based architecture for admin, faculty, and students",
-];
+import { buttonStyles } from "@/components/ui/Button";
 
 export default function HeroSection() {
   return (
-    <section className="mx-auto grid max-w-7xl gap-12 px-6 pb-16 pt-16 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:pb-24 lg:pt-24">
-      <div className="max-w-3xl">
-        <Badge>Enterprise University Platform</Badge>
+    <section className="px-6 pb-16 pt-16">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+        <div className="space-y-8">
+          <span className="inline-flex rounded-full border border-blue-400/20 bg-blue-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-blue-200">
+            Enterprise University CMS
+          </span>
 
-        <h1 className="mt-6 text-5xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-6xl">
-          The digital operating system for modern universities.
-        </h1>
+          <div className="space-y-5">
+            <h1 className="max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-white md:text-6xl">
+              One unified frontend for your university’s public presence and internal operations.
+            </h1>
+            <p className="max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
+              Campus Nexus centralizes admissions, departments, notices, events,
+              academic content, and role-based dashboards in one scalable product shell.
+            </p>
+          </div>
 
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-          Campus Nexus brings together academic content, admissions workflows,
-          departmental publishing, notices, events, and dashboard experiences
-          into one scalable frontend architecture.
-        </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <Link href="/dashboard" className={buttonStyles({ variant: "primary", size: "lg" })}>
+              Launch Dashboard
+            </Link>
+            <Link href="/admissions" className={buttonStyles({ variant: "secondary", size: "lg" })}>
+              Explore Admissions
+            </Link>
+          </div>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button href="/departments" variant="secondary" size="lg">
-            Explore Modules
-          </Button>
-          <Button href="/dashboard" variant="outline" size="lg">
-            Preview Dashboard
-          </Button>
+          <div className="grid gap-4 sm:grid-cols-3">
+            <Card className="p-5">
+              <ShieldCheck className="mb-3 text-blue-300" size={20} />
+              <h3 className="font-semibold text-white">Role-Based</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                Built for admins, faculty, staff, and students.
+              </p>
+            </Card>
+
+            <Card className="p-5">
+              <Sparkles className="mb-3 text-blue-300" size={20} />
+              <h3 className="font-semibold text-white">CMS Ready</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                Structured for content publishing and approvals.
+              </p>
+            </Card>
+
+            <Card className="p-5">
+              <Users className="mb-3 text-blue-300" size={20} />
+              <h3 className="font-semibold text-white">Scalable UX</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                Optimized for future backend and DB integrations.
+              </p>
+            </Card>
+          </div>
         </div>
 
-        <div className="mt-10 space-y-4">
-          {highlights.map((item) => (
-            <div key={item} className="flex items-start gap-3">
-              <div className="mt-1 h-2.5 w-2.5 rounded-full bg-cyan-600" />
-              <p className="text-slate-700">{item}</p>
+        <Card className="relative overflow-hidden p-8">
+          <div className="absolute right-0 top-0 h-32 w-32 rounded-full bg-blue-500/20 blur-3xl" />
+          <div className="space-y-6">
+            <div>
+              <p className="text-sm text-slate-400">Platform Snapshot</p>
+              <h3 className="mt-2 text-2xl font-semibold text-white">
+                Academic operations with product-grade clarity
+              </h3>
             </div>
-          ))}
-        </div>
-      </div>
 
-      <div className="grid gap-5">
-        <Card className="bg-slate-950 text-white">
-          <p className="text-sm uppercase tracking-[0.16em] text-cyan-300">
-            Active Ecosystem
-          </p>
-          <div className="mt-8 grid grid-cols-2 gap-4">
-            <div>
-              <p className="text-4xl font-semibold">24+</p>
-              <p className="mt-2 text-sm text-slate-300">Academic departments</p>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-sm text-slate-400">Students</p>
+                <p className="mt-2 text-3xl font-semibold text-white">12.8k</p>
+                <p className="mt-2 text-xs text-emerald-300">+8.2% growth</p>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-sm text-slate-400">Departments</p>
+                <p className="mt-2 text-3xl font-semibold text-white">24</p>
+                <p className="mt-2 text-xs text-blue-200">Multi-domain campus</p>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-sm text-slate-400">Courses</p>
+                <p className="mt-2 text-3xl font-semibold text-white">186</p>
+                <p className="mt-2 text-xs text-slate-300">Running this term</p>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                <p className="text-sm text-slate-400">Modules</p>
+                <p className="mt-2 text-3xl font-semibold text-white">14</p>
+                <p className="mt-2 text-xs text-slate-300">CMS + admin domains</p>
+              </div>
             </div>
-            <div>
-              <p className="text-4xl font-semibold">18k+</p>
-              <p className="mt-2 text-sm text-slate-300">Enrolled students</p>
-            </div>
-            <div>
-              <p className="text-4xl font-semibold">1.2k</p>
-              <p className="mt-2 text-sm text-slate-300">Faculty members</p>
-            </div>
-            <div>
-              <p className="text-4xl font-semibold">99.9%</p>
-              <p className="mt-2 text-sm text-slate-300">Portal availability</p>
-            </div>
+
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center gap-2 text-sm font-medium text-blue-200 transition hover:text-white"
+            >
+              View command center <ArrowRight size={16} />
+            </Link>
           </div>
         </Card>
-
-        <div className="grid gap-5 sm:grid-cols-2">
-          <Card>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-700">
-              Public CMS
-            </p>
-            <p className="mt-3 text-2xl font-semibold text-slate-950">
-              SEO-friendly academic presence
-            </p>
-            <p className="mt-3 text-sm leading-7 text-slate-600">
-              Department pages, announcements, admissions content, events, and
-              branded institutional storytelling.
-            </p>
-          </Card>
-
-          <Card>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-700">
-              Admin Portal
-            </p>
-            <p className="mt-3 text-2xl font-semibold text-slate-950">
-              Operational control at scale
-            </p>
-            <p className="mt-3 text-sm leading-7 text-slate-600">
-              Dashboard-driven management for students, faculty, notices,
-              content publishing, and university operations.
-            </p>
-          </Card>
-        </div>
       </div>
     </section>
   );

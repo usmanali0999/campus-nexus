@@ -1,44 +1,59 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { mockDepartments } from "@/data/mockDepartments";
 import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
-
-const departments = [
-  "Computer Science",
-  "Business Administration",
-  "Electrical Engineering",
-  "Social Sciences",
-  "Health Sciences",
-  "Architecture & Design",
-];
 
 export default function DepartmentsSection() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-      <div className="max-w-2xl">
-        <Badge>Academic Structure</Badge>
-        <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-          Departmental experiences designed for clarity and scale.
-        </h2>
-        <p className="mt-4 text-lg leading-8 text-slate-600">
-          Each department can have its own content system, leadership profile,
-          courses, notices, research highlights, and admission tracks.
-        </p>
-      </div>
+    <section className="px-6 py-16">
+      <div className="mx-auto max-w-7xl space-y-8">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-200">
+              Academic Structure
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-white">
+              Leading departments powering the institution
+            </h2>
+          </div>
 
-      <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {departments.map((department, index) => (
-          <Card key={department}>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-700">
-              Department {index + 1}
-            </p>
-            <h3 className="mt-3 text-2xl font-semibold text-slate-950">
-              {department}
-            </h3>
-            <p className="mt-3 text-sm leading-7 text-slate-600">
-              Structured for program listings, faculty profiles, research
-              updates, admission routes, and public academic visibility.
-            </p>
-          </Card>
-        ))}
+          <Link
+            href="/departments"
+            className="inline-flex items-center gap-2 text-sm font-medium text-blue-200 hover:text-white"
+          >
+            View all departments <ArrowRight size={16} />
+          </Link>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-3">
+          {mockDepartments.slice(0, 3).map((department) => (
+            <Card key={department.id}>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-white">{department.name}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">
+                    {department.description}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <p className="text-slate-500">Dean</p>
+                    <p className="mt-1 text-slate-200">{department.dean}</p>
+                  </div>
+                  <div>
+                    <p className="text-slate-500">Programs</p>
+                    <p className="mt-1 text-slate-200">{department.programs}</p>
+                  </div>
+                  <div>
+                    <p className="text-slate-500">Students</p>
+                    <p className="mt-1 text-slate-200">{department.students}</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );

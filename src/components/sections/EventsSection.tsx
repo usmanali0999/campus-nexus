@@ -1,57 +1,53 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { mockEvents } from "@/data/mockEvents";
 import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
-
-const events = [
-  {
-    date: "12 Sep",
-    title: "Admissions Open House",
-    description:
-      "A campus-wide discovery event for prospective students and parents.",
-  },
-  {
-    date: "22 Sep",
-    title: "Research & Innovation Summit",
-    description:
-      "Cross-faculty collaboration sessions with researchers and industry leads.",
-  },
-  {
-    date: "03 Oct",
-    title: "Leadership Forum",
-    description:
-      "Strategic academic and operational leadership discussions for institutional growth.",
-  },
-];
 
 export default function EventsSection() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-      <div className="max-w-2xl">
-        <Badge>Campus Life</Badge>
-        <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-          Events that power visibility, engagement, and community.
-        </h2>
-      </div>
-
-      <div className="mt-10 grid gap-5 lg:grid-cols-3">
-        {events.map((event) => (
-          <Card key={event.title}>
-            <div className="flex items-center justify-between">
-              <span className="rounded-2xl bg-slate-950 px-4 py-2 text-sm font-semibold text-white">
-                {event.date}
-              </span>
-              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-700">
-                Upcoming
-              </span>
-            </div>
-
-            <h3 className="mt-6 text-2xl font-semibold text-slate-950">
-              {event.title}
-            </h3>
-            <p className="mt-3 text-sm leading-7 text-slate-600">
-              {event.description}
+    <section className="px-6 py-16">
+      <div className="mx-auto max-w-7xl space-y-8">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-200">
+              Campus Life
             </p>
-          </Card>
-        ))}
+            <h2 className="mt-3 text-3xl font-semibold text-white">
+              Upcoming events and institutional moments
+            </h2>
+          </div>
+
+          <Link
+            href="/events"
+            className="inline-flex items-center gap-2 text-sm font-medium text-blue-200 hover:text-white"
+          >
+            Explore events <ArrowRight size={16} />
+          </Link>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-3">
+          {mockEvents.map((event) => (
+            <Card key={event.id}>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">
+                    {event.category}
+                  </span>
+                  <span className="text-xs text-slate-400">{event.date}</span>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold text-white">{event.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-400">
+                    {event.description}
+                  </p>
+                </div>
+
+                <p className="text-sm text-slate-300">Venue: {event.venue}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );
