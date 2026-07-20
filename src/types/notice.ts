@@ -4,5 +4,6 @@ export type Notice = {
   category: string;
   date: string;
   priority: "High" | "Medium" | "Low";
+  author: string;
   description: string;
 };

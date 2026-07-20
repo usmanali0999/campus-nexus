@@ -4,5 +4,7 @@ export type Department = {
   dean: string;
   programs: number;
   students: number;
+  faculty: number;
+  established: string;
   description: string;
 };
