@@ -28,3 +28,8 @@ body {
   background: rgba(96, 165, 250, 0.3);
   color: white;
 }
+
+select option {
+  background: #0f172a;
+  color: white;
+}

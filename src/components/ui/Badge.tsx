@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+﻿import { cn } from "@/lib/utils";
 
 type BadgeVariant = "default" | "success" | "warning" | "danger" | "info";
 
@@ -10,22 +10,8 @@ const variants: Record<BadgeVariant, string> = {
   info: "text-blue-300 bg-blue-400/10 border-blue-400/20",
 };
 
-type BadgeProps = {
-  children: React.ReactNode;
-  variant?: BadgeVariant;
-  className?: string;
-};
+type BadgeProps = { children: React.ReactNode; variant?: BadgeVariant; className?: string; };
 
 export default function Badge({ children, variant = "default", className }: BadgeProps) {
-  return (
-    <span
-      className={cn(
-        "inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium",
-        variants[variant],
-        className
-      )}
-    >
-      {children}
-    </span>
-  );
+  return <span className={cn("inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium", variants[variant], className)}>{children}</span>;
 }

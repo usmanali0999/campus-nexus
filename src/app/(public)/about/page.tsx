@@ -5,18 +5,27 @@ const pillars = [
   {
     title: "Institutional Clarity",
     description:
-      "Centralized visibility for content, departments, academic workflows, and administrative decisions.",
+      "Centralized visibility for content, departments, academic workflows, and administrative decisions across the entire university.",
   },
   {
     title: "Scalable Frontend Architecture",
     description:
-      "Designed to connect smoothly with future APIs, authentication systems, and database-backed modules.",
+      "Designed to connect smoothly with future APIs, authentication systems, and database-backed modules at enterprise scale.",
   },
   {
     title: "Executive-Level UX",
     description:
-      "Clean information hierarchy, modular components, and product-ready layouts for enterprise presentation.",
+      "Clean information hierarchy, modular components, and product-ready layouts that communicate professionalism and competence.",
   },
+];
+
+const capabilities = [
+  "Public website content management",
+  "Admissions journey and applicant communication",
+  "Departmental pages and faculty publishing",
+  "Role-based dashboard experiences",
+  "Academic notices, events, and announcements",
+  "Future CRUD, analytics, and backend integrations",
 ];
 
 export default function AboutPage() {
@@ -31,11 +40,9 @@ export default function AboutPage() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {pillars.map((item) => (
-            <Card key={item.title}>
+            <Card hover key={item.title}>
               <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-400">
-                {item.description}
-              </p>
+              <p className="mt-3 text-sm leading-7 text-slate-400">{item.description}</p>
             </Card>
           ))}
         </div>
@@ -44,19 +51,9 @@ export default function AboutPage() {
           <h3 className="text-2xl font-semibold text-white">
             What this platform is prepared to handle
           </h3>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {[
-              "Public website content management",
-              "Admissions journey and applicant communication",
-              "Departmental pages and faculty publishing",
-              "Role-based dashboard experiences",
-              "Academic notices, events, and announcements",
-              "Future CRUD, analytics, and backend integrations",
-            ].map((item) => (
-              <div
-                key={item}
-                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-300"
-              >
+          <div className="mt-6 grid gap-3 md:grid-cols-2">
+            {capabilities.map((item) => (
+              <div key={item} className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-300">
                 {item}
               </div>
             ))}

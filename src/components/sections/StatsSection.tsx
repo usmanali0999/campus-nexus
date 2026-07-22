@@ -1,4 +1,4 @@
-import Card from "@/components/ui/Card";
+﻿import Card from "@/components/ui/Card";
 
 const stats = [
   { label: "Active Students", value: "12,840" },
@@ -10,12 +10,9 @@ const stats = [
 export default function StatsSection() {
   return (
     <section className="px-6 py-8">
-      <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-4">
         {stats.map((item) => (
-          <Card key={item.label} className="p-6">
-            <p className="text-sm text-slate-400">{item.label}</p>
-            <p className="mt-3 text-3xl font-semibold text-white">{item.value}</p>
-          </Card>
+          <Card hover key={item.label}><p className="text-sm text-slate-400">{item.label}</p><p className="mt-3 text-3xl font-semibold text-white">{item.value}</p></Card>
         ))}
       </div>
     </section>

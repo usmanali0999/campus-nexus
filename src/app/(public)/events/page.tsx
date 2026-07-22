@@ -1,4 +1,5 @@
 import Card from "@/components/ui/Card";
+import Badge from "@/components/ui/Badge";
 import PageHeader from "@/components/shared/PageHeader";
 import { mockEvents } from "@/data/mockEvents";
 
@@ -8,29 +9,32 @@ export default function EventsPage() {
       <div className="mx-auto max-w-7xl space-y-10">
         <PageHeader
           eyebrow="Events"
-          title="Discover what’s happening across campus."
+          title="Discover what's happening across campus."
           description="A dedicated events experience for academic, research, admissions, and student engagement initiatives."
         />
 
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 lg:grid-cols-2">
           {mockEvents.map((event) => (
-            <Card key={event.id}>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">
-                    {event.category}
-                  </span>
-                  <span className="text-xs text-slate-500">{event.date}</span>
-                </div>
-
+            <Card hover key={event.id}>
+              <div className="flex items-center justify-between gap-3">
+                <Badge variant="info">{event.category}</Badge>
+                <span className="text-xs text-slate-500">{event.date}</span>
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-white">{event.title}</h3>
+              <p className="mt-2 text-sm leading-7 text-slate-400">{event.description}</p>
+              <div className="mt-4 grid grid-cols-3 gap-4 text-sm">
                 <div>
-                  <h3 className="text-xl font-semibold text-white">{event.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-400">
-                    {event.description}
-                  </p>
+                  <p className="text-slate-500">Venue</p>
+                  <p className="mt-1 text-slate-300">{event.venue}</p>
                 </div>
-
-                <p className="text-sm text-slate-300">Venue: {event.venue}</p>
+                <div>
+                  <p className="text-slate-500">Time</p>
+                  <p className="mt-1 text-slate-300">{event.time}</p>
+                </div>
+                <div>
+                  <p className="text-slate-500">Registered</p>
+                  <p className="mt-1 text-slate-300">{event.registered}/{event.capacity}</p>
+                </div>
               </div>
             </Card>
           ))}

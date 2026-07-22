@@ -1,6 +1,5 @@
 import Link from "next/link";
-import Button from "@/components/ui/Button";
-import Input from "@/components/ui/Input";
+import LoginForm from "@/components/forms/LoginForm";
 
 export default function LoginPage() {
   return (
@@ -14,23 +13,7 @@ export default function LoginPage() {
           Sign in to access the Campus Nexus dashboard.
         </p>
       </div>
-
-      <form className="space-y-4">
-        <Input
-          label="University Email"
-          type="email"
-          placeholder="admin@campusnexus.edu"
-        />
-        <Input
-          label="Password"
-          type="password"
-          placeholder="Enter your password"
-        />
-        <Button type="submit" className="w-full">
-          Sign In
-        </Button>
-      </form>
-
+      <LoginForm />
       <div className="flex items-center justify-between text-sm">
         <Link href="/forgot-password" className="text-slate-400 hover:text-white">
           Forgot password?

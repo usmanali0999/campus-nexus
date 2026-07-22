@@ -1,43 +1,30 @@
-import Card from "@/components/ui/Card";
-import Badge from "@/components/ui/Badge";
+﻿import Card from "@/components/ui/Card";
 
-const testimonials = [
-  {
-    name: "Dean Academic Affairs",
-    quote:
-      "Campus Nexus gives us a strong digital foundation for both academic communication and operational visibility.",
-  },
-  {
-    name: "Registrar Office",
-    quote:
-      "The structure is practical, scalable, and aligned with real institutional workflows across departments.",
-  },
-  {
-    name: "Technology Lead",
-    quote:
-      "This frontend architecture is future-ready for backend APIs, role-based access, and content governance.",
-  },
+const items = [
+  { name: "Dr. Farhan Javed", role: "Dean, Medical Sciences", quote: "Campus Nexus has transformed how we communicate across departments." },
+  { name: "Sana Tariq", role: "Student, BBA Finance", quote: "Everything is in one place. The interface is clean and easy to navigate." },
+  { name: "Prof. Kamran Shah", role: "Faculty, Computer Science", quote: "Managing courses and attendance has never been this streamlined." },
 ];
 
 export default function TestimonialsSection() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-      <div className="max-w-2xl">
-        <Badge>Institutional Confidence</Badge>
-        <h2 className="mt-5 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-          Built to feel like a serious product, not a student demo.
-        </h2>
-      </div>
-
-      <div className="mt-10 grid gap-5 lg:grid-cols-3">
-        {testimonials.map((item) => (
-          <Card key={item.name}>
-            <p className="text-lg leading-8 text-slate-700">“{item.quote}”</p>
-            <p className="mt-6 text-sm font-semibold uppercase tracking-[0.16em] text-cyan-700">
-              {item.name}
-            </p>
-          </Card>
-        ))}
+    <section className="px-6 py-16">
+      <div className="mx-auto max-w-7xl space-y-8">
+        <div className="text-center">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-200">Testimonials</p>
+          <h2 className="mt-3 text-3xl font-semibold text-white">What the campus community is saying</h2>
+        </div>
+        <div className="grid gap-6 lg:grid-cols-3">
+          {items.map((item) => (
+            <Card hover key={item.name}>
+              <p className="text-sm leading-7 text-slate-300">{item.quote}</p>
+              <div className="mt-6">
+                <p className="text-sm font-medium text-white">{item.name}</p>
+                <p className="text-xs text-slate-400">{item.role}</p>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -4,26 +4,10 @@ import Input from "@/components/ui/Input";
 import PageHeader from "@/components/shared/PageHeader";
 
 const contacts = [
-  {
-    title: "General Office",
-    value: "admin@campusnexus.edu",
-    detail: "General communication and public information.",
-  },
-  {
-    title: "Admissions Desk",
-    value: "admissions@campusnexus.edu",
-    detail: "Queries related to applications, eligibility, and merit.",
-  },
-  {
-    title: "Academic Affairs",
-    value: "academics@campusnexus.edu",
-    detail: "Program structure, departments, and academic policy support.",
-  },
-  {
-    title: "IT & Platform",
-    value: "support@campusnexus.edu",
-    detail: "Portal access, systems support, and operational assistance.",
-  },
+  { title: "General Office", value: "admin@campusnexus.edu", detail: "General communication and public information." },
+  { title: "Admissions Desk", value: "admissions@campusnexus.edu", detail: "Queries related to applications, eligibility, and merit." },
+  { title: "Academic Affairs", value: "academics@campusnexus.edu", detail: "Program structure, departments, and academic policy support." },
+  { title: "IT & Platform", value: "support@campusnexus.edu", detail: "Portal access, systems support, and operational assistance." },
 ];
 
 export default function ContactPage() {
@@ -39,12 +23,10 @@ export default function ContactPage() {
         <div className="grid gap-6 lg:grid-cols-[1fr_0.95fr]">
           <div className="grid gap-6 sm:grid-cols-2">
             {contacts.map((item) => (
-              <Card key={item.title}>
+              <Card hover key={item.title}>
                 <h3 className="text-lg font-semibold text-white">{item.title}</h3>
                 <p className="mt-3 text-sm text-blue-200">{item.value}</p>
-                <p className="mt-3 text-sm leading-6 text-slate-400">
-                  {item.detail}
-                </p>
+                <p className="mt-3 text-sm leading-6 text-slate-400">{item.detail}</p>
               </Card>
             ))}
           </div>
@@ -59,13 +41,11 @@ export default function ContactPage() {
                 <label className="text-sm font-medium text-slate-200">Message</label>
                 <textarea
                   rows={5}
-                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-400 focus:border-blue-400/60"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-slate-500 focus:border-blue-400/60"
                   placeholder="Write your message here..."
                 />
               </div>
-              <Button type="submit" className="w-full">
-                Submit Inquiry
-              </Button>
+              <Button type="submit" className="w-full">Submit Inquiry</Button>
             </form>
           </Card>
         </div>
